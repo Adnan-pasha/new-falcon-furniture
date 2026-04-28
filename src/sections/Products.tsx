@@ -127,7 +127,7 @@ export default function Products() {
           {products.map((product) => (
             <div
               key={product.title}
-              className="product-card bg-white rounded-xl shadow-card overflow-hidden transition-all duration-[400ms] hover:-translate-y-2 hover:shadow-card-deep group"
+              className="product-card bg-white rounded-xl shadow-card overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-card-deep group"
             >
               {/* Image */}
               <div className="relative aspect-[4/3] overflow-hidden">

@@ -106,7 +106,7 @@ function AccordionItem({
       </button>
       <div
         ref={contentRef}
-        className="overflow-hidden transition-all duration-350 ease-out"
+        className="overflow-hidden transition-all duration-300 ease-out"
         style={{
           maxHeight: isOpen ? contentRef.current?.scrollHeight + "px" : "0",
         }}
