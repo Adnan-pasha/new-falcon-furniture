@@ -21,7 +21,7 @@ const contactInfo = [
     label: "Service Area",
     lines: [
       "All across Bengaluru, Karnataka",
-      "Headquarters: 317, 6th Cross Rd, Arekere MICO Layout 2nd Stage, Bengaluru 560114",
+      "317, 6th Cross Rd, Arekere MICO Layout 2nd Stage, Bengaluru, Karnataka 560076",
     ],
   },
   {
