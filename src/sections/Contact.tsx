@@ -32,6 +32,8 @@ const contactInfo = [
   },
 ];
 
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
@@ -41,6 +43,7 @@ export default function Contact() {
     service: "",
     requirements: "",
   });
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -86,10 +89,36 @@ export default function Contact() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission would go here
-    alert("Thank you! We will get back to you within 2 hours.");
+    setStatus("loading");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+          subject: `New Quote Request – ${formData.service || "General"}`,
+          from_name: formData.name,
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email || "Not provided",
+          service: formData.service,
+          requirements: formData.requirements || "Not provided",
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setFormData({ name: "", phone: "", email: "", service: "", requirements: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -237,10 +266,22 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-crimson text-white font-sans font-semibold py-3.5 rounded-lg transition-all duration-300 hover:bg-[#A82020] focus:outline-none"
+                  disabled={status === "loading"}
+                  className="w-full bg-crimson text-white font-sans font-semibold py-3.5 rounded-lg transition-all duration-300 hover:bg-[#A82020] focus:outline-none disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {status === "loading" ? "Sending..." : "Send Message"}
                 </button>
+
+                {status === "success" && (
+                  <p className="font-sans text-sm text-green-600 text-center font-medium">
+                    Thank you! We will get back to you within 2 hours.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="font-sans text-sm text-crimson text-center font-medium">
+                    Something went wrong. Please call us directly or try again.
+                  </p>
+                )}
 
                 <p className="font-sans text-xs text-text-secondary text-center">
                   We respect your privacy. Your information is safe with us.
