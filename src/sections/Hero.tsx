@@ -168,36 +168,33 @@ export default function Hero({ scrollTo: _scrollTo }: HeroProps) {
             </div>
           </div>
 
-          {/* Right Column - Image Collage */}
-          <div ref={imagesRef} className="w-full lg:w-[45%] relative">
-            <div className="relative">
-              {/* Main Image */}
-              <div className="hero-image relative z-10 rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)] opacity-0">
+          {/* Right Column - Image Grid */}
+          <div ref={imagesRef} className="w-full lg:w-[45%]">
+            <div className="grid grid-cols-2 gap-3">
+              {/* Main image — full width */}
+              <div className="hero-image col-span-2 rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)] opacity-0">
                 <img
                   src="/hero-main.jpg"
                   alt="Custom L-shaped sofa handcrafted by New Falcon Furniture, Arekere Bangalore"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-[260px] object-cover"
                 />
               </div>
 
-              {/* Secondary Images */}
-              <div className="hero-image absolute -bottom-6 -left-6 w-[45%] z-20 rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.25)] border-2 border-navy opacity-0">
+              {/* Secondary images — side by side */}
+              <div className="hero-image rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.25)] opacity-0">
                 <img
                   src="/hero-secondary-1.jpg"
                   alt="Custom beds showroom at New Falcon Furniture workshop Arekere Bangalore"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-[180px] object-cover"
                 />
               </div>
-              <div className="hero-image absolute -bottom-6 right-0 w-[45%] z-20 rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.25)] border-2 border-navy opacity-0">
+              <div className="hero-image rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.25)] opacity-0">
                 <img
                   src="/hero-secondary-2.jpg"
                   alt="Custom bedroom furniture manufactured by New Falcon Furniture Bangalore"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-[180px] object-cover"
                 />
               </div>
-
-              {/* Gold accent line */}
-              <div className="absolute top-1/4 -left-4 w-[2px] h-1/2 bg-gradient-to-b from-gold/60 to-transparent hidden lg:block" />
             </div>
           </div>
         </div>
