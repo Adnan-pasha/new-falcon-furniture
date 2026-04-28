@@ -56,7 +56,7 @@ export default function Navigation({ scrollTo }: NavigationProps) {
                 scrolled ? "text-navy" : "text-white"
               }`}
             >
-              New Falcon
+              New Falcon Furniture
             </span>
           </button>
 

@@ -81,7 +81,7 @@ export default function Footer({ scrollTo }: FooterProps) {
                 </span>
               </div>
               <span className="font-display font-bold text-xl text-white">
-                New Falcon
+                New Falcon Furniture
               </span>
             </div>
             <p className="font-sans text-sm text-[#D4C5B0] leading-relaxed mb-5">
