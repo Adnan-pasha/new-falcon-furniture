@@ -18,10 +18,11 @@ const contactInfo = [
   },
   {
     icon: MapPin,
-    label: "Service Area",
+    label: "Address",
     lines: [
-      "All across Bengaluru, Karnataka",
-      "317, 6th Cross Rd, Arekere MICO Layout 2nd Stage, Bengaluru, Karnataka 560076",
+      "No. 422, Ground Floor, 1st Cross, Lakshmi Layout",
+      "Arekere, Bannerghatta Road",
+      "Bengaluru, Karnataka 560076",
     ],
   },
   {
